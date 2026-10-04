@@ -1,0 +1,8 @@
+Insight 1: HIGHEST PRIORITY: Brownsville in Brooklyn has priority score 38.4/100 with avg speed 7.6 mph and 141 trips.
+
+Insight 2: CONGESTION IMPACT: Speed drops 4.6% during peak hours (9.4 mph vs 9.9 mph off-peak). Congestion rate is 64.5% during peak.
+
+Insight 3: DEMAND PATTERN: Busiest hours are 18:00, 17:00, 19:00. Weekday avg 75,191 trips/day vs Weekend 76,118 trips/day.
+
+Insight 4: MIDTOWN FOCUS: Midtown Center has 125,288 total trips with 6 high-priority hours. This is the #1 candidate for transport optimization.
+

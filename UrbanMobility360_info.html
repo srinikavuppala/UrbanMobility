@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>UrbanMobility 360 - Project Summary</title>
+<style>
+body{font-family:'Segoe UI',Arial,sans-serif;background:#f4f6f9;color:#222;margin:0;padding:0}
+.w{max-width:960px;margin:0 auto;padding:20px}
+h1{text-align:center;font-size:34px;color:#1a237e;margin-top:25px}
+.sub{text-align:center;color:#555;font-size:15px;margin-bottom:30px}
+.box{background:white;border-radius:10px;padding:28px 32px;margin-bottom:22px;box-shadow:0 1px 5px rgba(0,0,0,.08)}
+.box h2{font-size:24px;color:#1a237e;border-bottom:2px solid #e91e63;padding-bottom:8px;margin-top:0}
+.box h3{font-size:18px;color:#283593;margin:18px 0 8px 0}
+table{width:100%;border-collapse:collapse;margin:10px 0;font-size:14px}
+th{background:#1a237e;color:white;padding:9px 14px;text-align:left;font-size:13px}
+td{padding:8px 14px;border-bottom:1px solid #e0e0e0;vertical-align:top}
+tr:nth-child(even) td{background:#f8f9fb}
+.tag{display:inline-block;padding:3px 10px;border-radius:12px;font-size:12px;font-weight:bold;margin:2px}
+.tg{background:#c8e6c9;color:#1b5e20}
+.tr{background:#ffcdd2;color:#b71c1c}
+.tb{background:#bbdefb;color:#0d47a1}
+.ty{background:#fff9c4;color:#f57f17}
+.tp{background:#e1bee7;color:#4a148c}
+.code{background:#263238;color:#80cbc4;padding:14px 18px;border-radius:8px;font-family:Courier New,monospace;font-size:13px;margin:10px 0;line-height:1.6}
+.flow{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:8px;margin:18px 0}
+.fs{background:#1a237e;color:white;padding:10px 16px;border-radius:8px;font-size:13px;font-weight:600;text-align:center}
+.fa{font-size:18px;color:#e91e63;font-weight:bold}
+.note{background:#fff3e0;border-left:4px solid #ff9800;padding:10px 15px;border-radius:0 6px 6px 0;margin:10px 0;font-size:14px}
+.key{background:#e8f5e9;border-left:4px solid #2e7d32;padding:10px 15px;border-radius:0 6px 6px 0;margin:10px 0;font-size:14px}
+.foot{text-align:center;color:#999;padding:25px;font-size:13px}
+ul{margin:8px 0 8px 20px}
+li{margin:4px 0}
+</style>
+</head>
+<body>
+<div class="w">
+
+<h1>&#128652; UrbanMobility 360</h1>
+<div class="sub">Project Summary &mdash; What Each Notebook Does, Tech Stack, and How It Works</div>
+
+<!-- TECH STACK -->
+<div class="box">
+<h2>&#128296; Tech Stack Used</h2>
+
+<h3>Python Side (Data Processing &amp; Analysis)</h3>
+<table>
+<tr><th>Tool</th><th>What It Does</th><th>Where Used</th></tr>
+<tr><td><b>Python 3.12</b></td><td>Main programming language</td><td>All notebooks</td></tr>
+<tr><td><b>Pandas</b></td><td>Load, clean, transform, aggregate data</td><td>Notebooks 1-6</td></tr>
+<tr><td><b>NumPy</b></td><td>Numerical operations, conditional logic</td><td>Notebooks 3, 5</td></tr>
+<tr><td><b>Scikit-Learn</b></td><td>MinMaxScaler for normalizing scores</td><td>Notebook 5</td></tr>
+<tr><td><b>Matplotlib</b></td><td>Creating charts (bar, line, scatter, histogram)</td><td>Notebook 4</td></tr>
+<tr><td><b>Seaborn</b></td><td>Heatmaps and styled visualizations</td><td>Notebook 4</td></tr>
+<tr><td><b>PyArrow</b></td><td>Reading/writing Parquet files</td><td>Notebooks 1, 2, 3</td></tr>
+<tr><td><b>Jupyter Notebook</b></td><td>Interactive coding environment</td><td>All notebooks</td></tr>
+</table>
+
+<h3>Visualization Side (Dashboard)</h3>
+<table>
+<tr><th>Tool</th><th>What It Does</th></tr>
+<tr><td><b>Tableau Public</b></td><td>Interactive dashboard with filters, KPIs, charts, scatter plots, heatmaps</td></tr>
+</table>
+
+<h3>Data</h3>
+<table>
+<tr><th>Item</th><th>Detail</th></tr>
+<tr><td>Source</td><td>NYC TLC Yellow Taxi Trip Records &mdash; January 2024</td></tr>
+<tr><td>Format</td><td>Parquet (compressed columnar format)</td></tr>
+<tr><td>Zone Lookup</td><td>CSV with 265 taxi zones and boroughs</td></tr>
+</table>
+</div>
+
+<!-- NOTEBOOK CONTENTS -->
+<div class="box">
+<h2>&#128218; What Is In Each Jupyter Notebook</h2>
+
+<!-- NB 1 -->
+<h3>Notebook 1: 01_data_loading.ipynb</h3>
+<table>
+<tr><th>Item</th><th>Detail</th></tr>
+<tr><td><b>Purpose</b></td><td>Load the raw data and understand what we are working with</td></tr>
+<tr><td><b>Input</b></td><td>yellow_tripdata_2024-01.parquet + taxi_zone_lookup.csv</td></tr>
+<tr><td><b>What It Does</b></td><td>
+  <ul>
+    <li>Reads the Parquet file using Pandas</li>
+    <li>Shows row count (2,964,624), column count (19), and data types</li>
+    <li>Lists all missing values (found 140,162 rows missing 5 columns = 4.7%)</li>
+    <li>Shows basic stats: avg distance, avg fare, date range</li>
+    <li>Checks how many zone IDs match between trip data and zone lookup</li>
+  </ul>
+</td></tr>
+<tr><td><b>Output</b></td><td>Printed summary and inspection results (no files saved)</td></tr>
+<tr><td><b>Key Finding</b></td><td>Min date was 2002-12-31 (bad data), 4.7% missing values, avg fare $18.18</td></tr>
+</table>
+
+<!-- NB 2 -->
+<h3>Notebook 2: 02_data_cleaning.ipynb</h3>
+<table>
+<tr><th>Item</th><th>Detail</th></tr>
+<tr><td><b>Purpose</b></td><td>Remove bad data so we only work with clean, valid records</td></tr>
+<tr><td><b>Input</b></td><td>Raw Parquet file + zone lookup</td></tr>
+<tr><td><b>What It Does</b></td><td>8-step cleaning pipeline:
+  <ol>
+    <li><b>Date filter:</b> Keep only January 2024 (removes 2002 dates and Feb leaks)</li>
+    <li><b>Duplicates:</b> Remove exact duplicate rows</li>
+    <li><b>Distance:</b> Remove trips with 0, negative, or >100 miles</li>
+    <li><b>Fare:</b> Remove fares that are 0, negative, or >$500</li>
+    <li><b>Passengers:</b> Fill nulls with 1, remove counts >6</li>
+    <li><b>Duration:</b> Calculate trip duration, remove <=0 or >3 hours</li>
+    <li><b>Zone validation:</b> Remove trips with zone IDs not in lookup</li>
+    <li><b>IQR outliers:</b> Remove statistical outliers from distance, fare, duration</li>
+  </ol>
+</td></tr>
+<tr><td><b>Output</b></td><td>Saves <code>yellow_tripdata_2024-01_clean.parquet</code> (2,352,078 rows, 79.3% retention)</td></tr>
+<tr><td><b>Key Finding</b></td><td>612,546 bad records removed, keeping 79.3% of data</td></tr>
+</table>
+
+<!-- NB 3 -->
+<h3>Notebook 3: 03_feature_engineering.ipynb</h3>
+<table>
+<tr><th>Item</th><th>Detail</th></tr>
+<tr><td><b>Purpose</b></td><td>Create new columns from existing data that enable deeper analysis</td></tr>
+<tr><td><b>Input</b></td><td>Clean Parquet file + zone lookup</td></tr>
+<tr><td><b>What It Does</b></td><td>Creates 19 new features:
+  <ul>
+    <li><b>Time features:</b> hour, day of week, day name, weekend flag, day type</li>
+    <li><b>Peak classification:</b> Morning Peak (7-9), Evening Peak (17-19), Midday, Night, Early Morning, Off-Peak</li>
+    <li><b>Speed:</b> avg_speed_mph = distance / (duration in hours)</li>
+    <li><b>Fare efficiency:</b> fare_per_mile, fare_per_minute</li>
+    <li><b>Zone names:</b> Maps zone IDs to zone names and borough names</li>
+    <li><b>Congestion:</b> is_congested_trip (speed &lt; 10 mph), congestion_severity (1-5 scale)</li>
+    <li><b>Route:</b> Creates route string (PU_zone &rarr; DO_zone) and zone pair ID</li>
+  </ul>
+</td></tr>
+<tr><td><b>Output</b></td><td>Saves <code>yellow_tripdata_2024-01_engineered.parquet</code> (2,338,354 rows, 39 columns)</td></tr>
+</table>
+
+<!-- NB 4 -->
+<h3>Notebook 4: 04_exploratory_analysis.ipynb</h3>
+<table>
+<tr><th>Item</th><th>Detail</th></tr>
+<tr><td><b>Purpose</b></td><td>Understand patterns in the data through charts and statistics</td></tr>
+<tr><td><b>Input</b></td><td>Engineered Parquet file</td></tr>
+<tr><td><b>What It Does</b></td><td>Creates 8 visualizations:
+  <ol>
+    <li><b>Hourly Demand:</b> Bar chart of trips by hour (peak hours highlighted in red)</li>
+    <li><b>Weekday vs Weekend:</b> Bar chart comparing demand by day</li>
+    <li><b>Top 20 Pickup Zones:</b> Horizontal bar chart of busiest zones</li>
+    <li><b>Borough Analysis:</b> 3 charts &mdash; trips, speed, congestion by borough</li>
+    <li><b>Speed vs Duration:</b> Scatter plot colored by congestion severity</li>
+    <li><b>Zone x Hour Heatmap:</b> Top 15 zones across 24 hours</li>
+    <li><b>Priority Score Distribution:</b> Histogram + pie chart of priority labels</li>
+    <li><b>Peak vs Off-Peak:</b> Comparison table of speed, duration, fare, congestion</li>
+  </ol>
+</td></tr>
+<tr><td><b>Output</b></td><td>8 PNG files saved to visuals/ folder</td></tr>
+<tr><td><b>Key Finding</b></td><td>Speed drops 4.6% during peak; congestion rises to 65%</td></tr>
+</table>
+
+<!-- NB 5 -->
+<h3>Notebook 5: 05_advanced_analysis.ipynb</h3>
+<table>
+<tr><th>Item</th><th>Detail</th></tr>
+<tr><td><b>Purpose</b></td><td>Calculate scores that identify problem areas &mdash; the core analytical value</td></tr>
+<tr><td><b>Input</b></td><td>Engineered Parquet file</td></tr>
+<tr><td><b>What It Does</b></td><td>
+  <ol>
+    <li><b>Zone-Hour Aggregation:</b> Groups 2.3M trips into 7,208 zone-hour combinations with avg speed, duration, fare, congestion %</li>
+    <li><b>Route-Level Stats:</b> Groups by pickup-dropoff zone pair (9,187 routes) with efficiency metrics</li>
+    <li><b>Congestion Classification:</b> Labels each zone-hour as Severe/Heavy/Moderate/Light/Free Flow</li>
+    <li><b>Route Efficiency Score:</b> 0-100 score based on normalized speed (60% weight) and duration (40% weight)</li>
+    <li><b>&#11088; Mobility Priority Score:</b> 0-100 score using formula: 30% Demand + 30% Congestion + 20% Speed_Inverse + 20% Duration</li>
+    <li><b>Zone-Level Priority:</b> Aggregates priority scores to zone level for mapping</li>
+    <li><b>Visualizations:</b> Priority distribution histogram and top priority zones chart</li>
+  </ol>
+</td></tr>
+<tr><td><b>Output</b></td><td>5 CSV files exported to data/processed/ for Tableau</td></tr>
+<tr><td><b>Key Finding</b></td><td>Midtown Center at 6PM = highest priority (64.7 score, 10,890 trips at 7.8 mph)</td></tr>
+</table>
+
+<!-- NB 6 -->
+<h3>Notebook 6: 06_insights_report.ipynb</h3>
+<table>
+<tr><th>Item</th><th>Detail</th></tr>
+<tr><td><b>Purpose</b></td><td>Answer the 5 project questions and generate recommendations</td></tr>
+<tr><td><b>Input</b></td><td>Engineered Parquet + exported CSVs</td></tr>
+<tr><td><b>What It Does</b></td><td>Answers each question:
+  <ul>
+    <li><b>WHERE?</b> &rarr; Top 5 zones by trip count</li>
+    <li><b>WHEN?</b> &rarr; Top 5 busiest hours + weekday/weekend comparison</li>
+    <li><b>WHY?</b> &rarr; Peak vs off-peak speed, congestion, fare comparison</li>
+    <li><b>WHICH?</b> &rarr; Zones with High+ priority scores</li>
+    <li><b>WHAT TO PRIORITIZE?</b> &rarr; Top 3 zones with specific recommendations</li>
+  </ul>
+</td></tr>
+<tr><td><b>Output</b></td><td>Printed report + insights_report.txt saved</td></tr>
+</table>
+</div>
+
+<!-- HOW IT WORKS -->
+<div class="box">
+<h2>&#128260; How The Whole Project Works </h2>
+
+<h3>Big Picture</h3>
+<p>We take <b>raw taxi trip data</b> (2.9 million records), clean it, add useful features, analyze it, calculate a <b>Mobility Priority Score</b>, and present everything in an <b>interactive Tableau dashboard</b> so decision-makers can see where transport problems exist and what to fix first.</p>
+
+<div class="flow">
+  <div class="fs">Raw Data<br>2.9M rows</div>
+  <div class="fa">&rarr;</div>
+  <div class="fs">Clean<br>2.35M rows</div>
+  <div class="fa">&rarr;</div>
+  <div class="fs">Add Features<br>19 new cols</div>
+  <div class="fa">&rarr;</div>
+  <div class="fs">Analyze<br>Charts + Stats</div>
+  <div class="fa">&rarr;</div>
+  <div class="fs">Score<br>Priority 0-100</div>
+  <div class="fa">&rarr;</div>
+  <div class="fs">Visualize<br>Tableau</div>
+</div>
+
+<h3>Step-by-Step Procedure</h3>
+
+<table>
+<tr><th>Step</th><th>What Happens</th><th>Why</th></tr>
+<tr><td><b>1. Load Data</b></td><td>Read the Parquet file into Pandas DataFrame. Inspect columns, missing values, date ranges.</td><td>Need to understand what data we have before doing anything</td></tr>
+<tr><td><b>2. Clean Data</b></td><td>Remove records with bad dates (year 2002!), zero/negative distances, extreme fares, invalid durations, and statistical outliers.</td><td>Garbage in = garbage out. Bad records distort all analysis</td></tr>
+<tr><td><b>3. Add Features</b></td><td>Create new columns: hour of day, peak/off-peak period, average speed, fare per mile, congestion severity, zone names.</td><td>The raw data only has timestamps and distances. We need derived features like speed and peak period to analyze congestion</td></tr>
+<tr><td><b>4. Explore Data</b></td><td>Chart hourly demand, weekday vs weekend, top zones, borough stats, speed vs duration.</td><td>Get initial understanding of patterns before deep analysis</td></tr>
+<tr><td><b>5. Advanced Scoring</b></td><td>Aggregate data to zone-hour level. Calculate Route Efficiency Score and Mobility Priority Score.</td><td>This is where the real value is created. The Priority Score identifies exactly which areas at which times need the most attention</td></tr>
+<tr><td><b>6. Generate Insights</b></td><td>Answer WHERE, WHEN, WHY, WHICH, and WHAT TO PRIORITIZE with specific numbers and recommendations.</td><td>Turn analysis into actionable recommendations</td></tr>
+<tr><td><b>7. Build Dashboard</b></td><td>Load exported CSVs into Tableau. Build 8 sheets: KPIs, line charts, heatmaps, scatter plots, bar charts. Add interactive filters.</td><td>Let stakeholders explore the data themselves without needing Python</td></tr>
+</table>
+
+<h3>How We Got The Required Result</h3>
+
+<div class="key">
+<b>Question: WHERE are mobility hotspots?</b><br>
+<b>How:</b> Grouped all trips by pickup zone, counted trips per zone. Also aggregated the Priority Score to zone level. Found: <b>Midtown Center, Upper East Side South, Penn Station area</b>
+</div>
+
+<div class="key">
+<b>Question: WHEN is demand highest?</b><br>
+<b>How:</b> Grouped trips by pickup hour. Created peak period classification (Morning Peak 7-9, Evening Peak 17-19). Compared weekday vs weekend. Found: <b>Busiest hours are 5-7 PM</b>
+</div>
+
+<div class="key">
+<b>Question: WHY does congestion happen?</b><br>
+<b>How:</b> Compared average speed and congestion rate between peak and off-peak periods. Found: <b>Speed drops 4.6% during peak, congestion rises from 59% to 65%</b>
+</div>
+
+<div class="key">
+<b>Question: WHICH routes are inefficient?</b><br>
+<b>How:</b> Calculated Route Efficiency Score = normalized speed (60%) + normalized duration inverse (40%). Found routes with low efficiency. Also found <b>13 zone-hour combinations classified as High priority</b>
+</div>
+
+<div class="key">
+<b>Question: WHAT should be prioritized?</b><br>
+<b>How:</b> Calculated Mobility Priority Score using 4 factors: Demand (30%) + Congestion (30%) + Speed_Inverse (20%) + Duration (20%). Each factor normalized to 0-1 using MinMaxScaler, then weighted and scaled to 0-100. Found: <b>Midtown Center at 5-7 PM is #1 priority (score 64.7, 10,890 trips at 7.8 mph)</b>
+</div>
+</div>
+
+<!-- PRIORITY SCORE EXPLAINED -->
+<div class="box">
+<h2>&#11088; How The Mobility Priority Score Works</h2>
+
+<div class="code">
+Mobility Priority Score = (
+    0.30 &times; Demand_normalized +
+    0.30 &times; Congestion_normalized +
+    0.20 &times; Speed_Inverse_normalized +
+    0.20 &times; Duration_normalized
+) &times; 100
+</div>
+
+<h3>Each Factor Explained</h3>
+<table>
+<tr><th>Factor</th><th>Weight</th><th>What It Measures</th><th>Higher Value Means</th></tr>
+<tr><td><b>Demand</b></td><td>30%</td><td>Number of trips in this zone at this hour</td><td>More people affected by problems</td></tr>
+<tr><td><b>Congestion</b></td><td>30%</td><td>Average congestion severity (1-5 scale)</td><td>More severe traffic congestion</td></tr>
+<tr><td><b>Speed Inverse</b></td><td>20%</td><td>1/speed (lower speed = higher value)</td><td>Vehicles moving slower</td></tr>
+<tr><td><b>Duration</b></td><td>20%</td><td>Average trip duration in minutes</td><td>Trips taking longer</td></tr>
+</table>
+
+<h3>Why These Weights?</h3>
+<ul>
+<li><b>Demand (30%):</b> If nobody uses a route, fixing it has low impact. High demand = high impact.</li>
+<li><b>Congestion (30%):</b> Direct measure of the problem we are trying to solve.</li>
+<li><b>Speed (20%):</b> Low speed confirms congestion is real, not just high trip count.</li>
+<li><b>Duration (20%):</b> Long trip times mean people are wasting more time.</li>
+</ul>
+
+<h3>How Normalization Works</h3>
+<p>Each factor has different units (trips, severity 1-5, mph, minutes). We use <b>MinMaxScaler</b> from Scikit-Learn to convert all to 0-1 range so they can be combined fairly.</p>
+<div class="code">
+Example: If trip counts range from 1 to 10,890
+  - 10,890 trips &rarr; normalized to 1.0 (highest)
+  - 5,445 trips &rarr; normalized to 0.5 (middle)
+  - 1 trip      &rarr; normalized to 0.0 (lowest)
+</div>
+
+<h3>Priority Labels</h3>
+<table>
+<tr><th>Score Range</th><th>Label</th><th>Meaning</th></tr>
+<tr><td>75-100</td><td><span class="tag tr">Critical</span></td><td>Urgent attention needed</td></tr>
+<tr><td>55-75</td><td><span class="tag ty">High</span></td><td>Should be prioritized</td></tr>
+<tr><td>35-55</td><td><span class="tag tb">Medium</span></td><td>Worth monitoring</td></tr>
+<tr><td>15-35</td><td><span class="tag tg">Low</span></td><td>Acceptable</td></tr>
+<tr><td>0-15</td><td><span class="tag tp">Minimal</span></td><td>No action needed</td></tr>
+</table>
+</div>
+
+<!-- DATA FLOW -->
+<div class="box">
+<h2>&#128218; Data Flow: What File Goes Where</h2>
+
+<div class="code">
+RAW DATA
+  yellow_tripdata_2024-01.parquet  (48 MB, 2.9M rows)
+      |
+      v
+NOTEBOOK 1: Load & Inspect
+      |
+      v
+NOTEBOOK 2: Clean
+      |
+      +---> yellow_tripdata_2024-01_clean.parquet  (clean, 2.35M rows)
+      |
+      v
+NOTEBOOK 3: Feature Engineering
+      |
+      +---> yellow_tripdata_2024-01_engineered.parquet  (39 cols, 2.34M rows)
+      |
+      v
+NOTEBOOK 4: EDA
+      |
+      +---> 8 PNG charts in visuals/
+      |
+      v
+NOTEBOOK 5: Advanced Analysis + Scoring
+      |
+      +---> tableau_zone_hour.csv        (7,208 rows)
+      +---> tableau_routes.csv           (9,187 rows)
+      +---> tableau_zone_summary.csv     (240 rows)
+      +---> tableau_daily_trend.csv      (31 rows)
+      +---> tableau_kpis.csv             (6 rows)
+      |
+      v
+NOTEBOOK 6: Insights
+      |
+      +---> insights_report.txt
+      |
+      v
+TABLEAU DASHBOARD
+      |
+      +---> 8 interactive sheets
+      +---> 3 filters (borough, day type, peak period)
+      +---> KPIs, heatmaps, scatter, bar charts
+</div>
+</div>
+
+<!-- KEY RESULTS -->
+<div class="box">
+<h2>&#127942; Key Results We Got</h2>
+
+<table>
+<tr><th>Result</th><th>Value</th></tr>
+<tr><td>Total trips analyzed</td><td><b>2,338,354</b></td></tr>
+<tr><td>Unique zones</td><td><b>240</b></td></tr>
+<tr><td>Unique routes</td><td><b>9,187</b></td></tr>
+<tr><td>Zone-hour combinations</td><td><b>7,208</b></td></tr>
+<tr><td>High-priority hotspots</td><td><b>13</b></td></tr>
+<tr><td>Highest priority score</td><td><b>64.7/100</b> (Midtown Center at 6 PM)</td></tr>
+<tr><td>Peak speed drop</td><td><b>4.6%</b> (9.4 mph vs 9.9 mph)</td></tr>
+<tr><td>Peak congestion rate</td><td><b>64.5%</b> of trips congested</td></tr>
+<tr><td>#1 recommendation</td><td><b>Midtown Center</b> &mdash; dedicated lanes 4-8 PM</td></tr>
+</table>
+
+<h3>4 Insights Summary</h3>
+<div style="background:#e3f2fd;padding:12px;border-radius:8px;margin:8px 0">
+<b>1.</b> Brownsville (Brooklyn) has highest priority score per zone (38.4) due to very low speed (7.6 mph)
+</div>
+<div style="background:#e3f2fd;padding:12px;border-radius:8px;margin:8px 0">
+<b>2.</b> Speed drops 4.6% during peak hours; congestion surges to 64.5%
+</div>
+<div style="background:#e3f2fd;padding:12px;border-radius:8px;margin:8px 0">
+<b>3.</b> Busiest hours: 6 PM, 5 PM, 7 PM. Weekday and weekend have similar volume.
+</div>
+<div style="background:#e3f2fd;padding:12px;border-radius:8px;margin:8px 0">
+<b>4.</b> Midtown Center has 125,288 trips and 6 high-priority hours &mdash; #1 candidate for optimization
+</div>
+</div>
+
+<!-- QUICK EXPLAIN -->
+<div class="box">
+<h2>&#128172; Quick Explanation </h2>
+
+<div style="background:#f3e5f5;padding:20px;border-radius:8px;margin:10px 0">
+<p><b>"Here is what we did:"</b></p>
+<ol>
+<li>We took <b>2.9 million NYC taxi trips</b> from January 2024</li>
+<li>We <b>cleaned</b> the data &mdash; removed bad dates, zero distances, extreme fares, and outliers. Kept 79% of records (2.35 million clean trips)</li>
+<li>We <b>added features</b> &mdash; calculated speed, identified peak hours, measured congestion severity, mapped zone names</li>
+<li>We <b>analyzed</b> the data &mdash; found that demand peaks at 5-7 PM, speed drops 4.6% during rush hour, and 65% of peak trips are congested</li>
+<li>We <b>created a Mobility Priority Score</b> (0-100) that combines demand, congestion, speed, and duration. This score tells us <b>exactly which areas at which times</b> need the most attention</li>
+<li>The <b>highest priority</b> is Midtown Center at 6 PM on weekdays &mdash; 10,890 trips crawling at 7.8 mph. This is where the city should focus optimization efforts</li>
+<li>We built an <b>interactive Tableau dashboard</b> with 8 sheets and filters so anyone can explore the data by borough, time of day, and peak period</li>
+</ol>
+<p><b>The unique value of this project:</b> Instead of just showing charts, we created a <b>scoring system</b> that ranks every zone-hour combination by how urgently it needs transport optimization. This turns raw data into actionable priorities.</p>
+</div>
+</div>
+
+<div class="foot">
+<p>&#128652; UrbanMobility 360 &mdash; Project Summary</p>
+<p>Python + Tableau | NYC Yellow Taxi | January 2024</p>
+</div>
+
+</div>
+</body>
+</html>

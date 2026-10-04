@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>UrbanMobility 360 - Project Report</title>
+<style>
+  body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #f0f2f5;
+    color: #1a1a2e;
+    line-height: 1.7;
+    margin: 0;
+  }
+  .container { max-width: 1100px; margin: 0 auto; padding: 20px; }
+  .header {
+    background: linear-gradient(135deg, #1a1a2<e, #16213e, #0f3460);
+    color: white; padding: 50px 40px; border-radius: 16px;
+    margin-bottom: 30px; text-align: center;
+  }
+  .header h1 { font-size: 42px; margin-bottom: 10px; letter-spacing: 2px; }
+  .header .emoji { font-size: 48px; margin-bottom: 15px; }
+  .header .sub { font-size: 18px; color: #a8d8ea; }
+  .header .meta { font-size: 14px; color: #8899aa; margin-top: 15px; }
+  .section {
+    background: white; border-radius: 12px; padding: 35px 40px;
+    margin-bottom: 25px; box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+  .section h2 {
+    font-size: 28px; color: #0f3460; margin-bottom: 20px;
+    padding-bottom: 12px; border-bottom: 3px solid #e94560;
+  }
+  .section h3 { font-size: 20px; color: #16213e; margin: 20px 0 10px 0; }
+  .kpi-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 20px; margin: 20px 0;
+  }
+  .kpi-card {
+    background: linear-gradient(135deg, #0f3460, #16213e);
+    color: white; padding: 25px; border-radius: 12px; text-align: center;
+  }
+  .kpi-card .val { font-size: 32px; font-weight: bold; color: #e94560; }
+  .kpi-card .lbl { font-size: 14px; color: #a8d8ea; margin-top: 5px; }
+  table { width: 100%; border-collapse: collapse; margin: 15px 0; font-size: 15px; }
+  th { background: #0f3460; color: white; padding: 12px 16px; text-align: left; }
+  td { padding: 10px 16px; border-bottom: 1px solid #e0e0e0; }
+  tr:nth-child(even) td { background: #f8f9fb; }
+  .tag {
+    display: inline-block; padding: 4px 12px; border-radius: 20px;
+    font-size: 13px; font-weight: 600; margin: 2px;
+  }
+  .g { background: #d4edda; color: #155724; }
+  .b { background: #cce5ff; color: #004085; }
+  .r { background: #f8d7da; color: #721c24; }
+  .y { background: #fff3cd; color: #856404; }
+  .code {
+    background: #1a1a2e; color: #a8d8ea; padding: 20px; border-radius: 8px;
+    font-family: 'Courier New', monospace; font-size: 14px; margin: 15px 0;
+  }
+  .insight {
+    background: #fff3cd; border-left: 5px solid #e94560;
+    padding: 20px 25px; border-radius: 0 8px 8px 0; margin: 15px 0;
+  }
+  .insight strong { color: #e94560; }
+  .priority {
+    background: #f8d7da; border-left: 5px solid #721c24;
+    padding: 20px 25px; border-radius: 0 8px 8px 0; margin: 15px 0;
+  }
+  .flow {
+    display: flex; align-items: center; justify-content: center;
+    flex-wrap: wrap; gap: 10px; margin: 20px 0;
+  }
+  .step {
+    background: #0f3460; color: white; padding: 10px 18px;
+    border-radius: 8px; font-size: 14px; font-weight: 600; text-align: center;
+  }
+  .arrow { font-size: 20px; color: #e94560; font-weight: bold; }
+  ul { margin: 10px 0 10px 25px; }
+  li { margin: 5px 0; }
+  .footer { text-align: center; color: #888; padding: 30px; font-size: 14px; }
+</style>
+</head>
+<body>
+?div class="container">
+
+  <div class="header">
+    <div class="emoji">&#128652;</div>
+    <h1>UrbanMobility 360</h1>
+    <div class="sub">Smart Urban Transport Analytics - Project Report</div>
+    <div class="meta">NYC Yellow Taxi | January 2024 | Python + Tableau</div>
+  </div>
+
+  <div class="section">
+    <h2>&#128204; Project Overview</h2>
+    <p>This project analyzes <strong>NYC Yellow Taxi trip data</strong> to identify <strong>where, when, and why</strong> travel demand, congestion, and inefficient transport usage occur. The analysis produces an interactive Tableau dashboard with a unique <strong>Mobility Priority Score</strong> that identifies routes and areas needing optimization.</p>
+    <h3>Project Workflow</h3>
+    <div class="flow">
+      <div class="step">Raw Data<br>2.9M rows</div>
+      <div class="arrow">&rarr;</div>
+      <div class="step">Python<br>Cleaning</div>
+      <div class="arrow">&rarr;</div>
+      <div class="step">Feature<br>Engineering</div>
+      <div class="arrow">&rarr;</div>
+      <div class="step">EDA<br>8 charts</div>
+      <div class="arrow">&rarr;</div>
+      <div class="step">Advanced<br>Scoring</div>
+      <div class="arrow">&rarr;</div>
+      <div class="step">Tableau<br>Dashboard</div>
+      <div class="arrow">&rarr;</div>
+      <div class="step">Insights</div>
+    </div>
+    <h3>Tech Stack</h3>
+    <p>
+      <span class="tag b">Python 3.12</span>
+      <span class="tag b">Pandas</span>
+      <span class="tag b">NumPy</span>
+      <span class="tag b">Scikit-Learn</span>
+      <span class="tag b">Matplotlib</span>
+      <span class="tag b">Seaborn</span>
+      <span class="tag b">Jupyter Notebook</span>
+      <span class="tag b">Tableau Public</span>
+    </p>
+  </div>
+
+  <div class="section">
+    <h2>&#128230; Phase 1: Data Loading</h2>
+    <table>
+      <tr><th>Parameter</th><th>Value</th></tr>
+      <tr><td>Data Source</td><td>NYC TLC Yellow Taxi Trip Records</td></tr>
+      <tr><td>Time Period</td><td>January 2024</td></tr>
+      <tr><td>File Format</td><td>Parquet</td></tr>
+      <tr><td>Total Rows</td><td><strong>2,964,624</strong></td></tr>
+      <tr><td>Total Columns</td><td>19</td></tr>
+      <tr><td>Total Taxi Zones</td><td>265</td></tr>
+      <tr><td>Boroughs</td><td>7 (Manhattan, Brooklyn, Queens, Bronx, Staten Island, EWR, Unknown)</td></tr>
+    </table>
+    <h3>Issues Found</h3>
+    <ul>
+      <li><strong>Bad dates:</strong> Min datetime was 2002-12-31 (22 years before Jan 2024!)</li>
+      <li><strong>Month leak:</strong> Max datetime extended to 2024-02-01</li>
+      <li><strong>Missing values:</strong> 140,162 rows (4.7%) missing 5 columns</li>
+      <li><strong>Avg distance:</strong> 3.65 miles | <strong>Avg fare:</strong> $18.18</li>
+    </ul>
+    <p><span class="tag g">&#10003; Complete</span></p>
+  </div>
+
+  <div class="section">
+    <h2>&#128187; Phase 2: Data Cleaning</h2>
+    <table>
+      <tr><th>Step</th><th>Filter</th><th>Detail</th></tr>
+      <tr><td>1</td><td>Date filter</td><td>January 2024 only</td></tr>
+      <tr><td>2</td><td>Duplicates</td><td>Remove exact duplicate rows</td></tr>
+      <tr><td>3</td><td>Distance</td><td>0 &lt; distance &le; 100 miles</td></tr>
+      <tr><td>4</td><td>Fare</td><td>0 &lt; fare &le; $500</td></tr>
+      <tr><td>5</td><td>Passengers</td><td>1-6, nulls filled with 1</td></tr>
+      <tr><td>6</td><td>Duration</td><td>0 &lt; duration &le; 180 min</td></tr>
+      <tr><td>7</td><td>Zone validation</td><td>Must exist in zone lookup</td></tr>
+      <tr><td>8</td><td>IQR outliers</td><td>Distance, fare, duration</td></tr>
+    </table>
+    <div class="kpi-grid">
+      <div class="kpi-card"><div class="val">2,964,624</div><div class="lbl">Starting Records</div></div>
+      <div class="kpi-card"><div class="val">2,352,078</div><div class="lbl">Clean Records</div></div>
+      <div class="kpi-card"><div class="val">79.3%</div><div class="lbl">Retention Rate</div></div>
+    </div>
+    <p><span class="tag g">&#10003; Complete</span></p>
+  </div>
+
+  <div class="section">
+    <h2>&#128295; Phase 3: Feature Engineering</h2>
+    <table>
+      <tr><th>#</th><th>Feature</th><th>Description</th></tr>
+      <tr><td>1</td><td>pickup_hour</td><td>Hour of day (0-23)</td></tr>
+      <tr><td>2</td><td>pickup_dayofweek</td><td>Day of week (0=Mon, 6=Sun)</td></tr>
+      <tr><td>3</td><td>pickup_day_name</td><td>Day name</td></tr>
+     !tr><td>4</td><td>pickup_date</td><td>Date for daily aggregation</td></tr>
+      <tr><td>5</td><td>is_weekend</td><td>1 if Sat/Sun</td></tr>
+      <tr><td>6</td><td>day_type</td><td>Weekday or Weekend</td></tr>
+      <tr><td>7</td><td>peak_period</td><td>Morning Peak / Midday / Evening Peak / Night / Early Morning / Off-Peak</td></tr>
+      <tr><td>8</td><td>is_peak</td><td>1 if Morning/Evening Peak</td></tr>
+      <tr><td>9</td><td>avg_speed_mph</td><td>Distance / (duration in hours)</td></tr>
+      <tr><td>10</td><td>fare_per_mile</td><td>Fare / distance</td></tr>
+      <tr><td>11</td><td>fare_per_minute</td><td>Fare / duration</td></tr>
+      <tr><td>12</td><td>PU_zone / DO_zone</td><td>Zone names from lookup</td></tr>
+      <tr><td>13</td><td>PU_borough / DO_borough</td><td>Borough names</td></tr>
+      <tr><td>14</td><td>is_congested_trip</td><td>1 if speed &lt; 10 mph</td></tr>
+      <tr><td>15</td><td>congestion_severity</td><td>1 (Free Flow) to 5 (Severe)</td></tr>
+      <tr><td>16</td><td>route</td><td>PU_zone to DO_zone</td></tr>
+      <tr><td>17</td><td>zone_pair</td><td>PU_ID-DO_ID pair</td></tr>
+    </table>
+    <div class="kpi-grid">
+      <div class="kpi-card"><div class="val">2,338,354</div><div class="lbl">Final Rows</div></div>
+      <div class="kpi-card"><div class="val">39</div><div class="lbl">Total Columns</div></div>
+      <div class="kpi-card"><div class="val">19</div><div class="lbl">New Features</div></div>
+    </div>
+    <p><span class="tag g">&#10003; Complete</span></p>
+  </div>
+
+  <div class="section">
+    <h2>&#128202; Phase 4: Exploratory Data Analysis</h2>
+    <table>
+      <tr><th>#</th><th>Chart</th><th>Key Finding</th></tr>
+      <tr><td>1</td><td>Hourly Trip Demand</td><td>Peak hours: 5-7 PM and 7-9 AM</td></tr>
+      <tr><td>2</td><td>Weekday vs Weekend</td><td>Similar daily trip volume</td></tr>
+      <tr><td>3</td><td>Top 20 Pickup Zones</td><td>Upper East Side and Midtown dominate</td></tr>
+      <tr><td>4</td><td>Borough Analysis</td><td>Manhattan = most trips, lowest speed</td></tr>
+      <tr><td>5</td><td>Speed vs Duration</td><td>Low speed + long duration = high congestion</td></tr>
+      <tr><td>6</td><td>Zone x Hour Heatmap</td><td>Midtown intense demand 8AM-10PM</td></tr>
+      <tr><td>7</td><td>Priority Distribution</td><td>Most zone-hours Low/Medium; 13 High</td></tr>
+      <tr><td>8</td><td>Peak vs Off-Peak</td><td>Speed drops 4.6%; congestion rises to 65%</td></tr>
+    </table>
+    <h3>Peak vs Off-Peak</h3>
+    <table>
+      <tr><th>Metric</th><th>Off-Peak</th><th>Peak</th><th>Change</th></tr>
+      <tr><td>Avg Speed</td><td>9.85 mph</td><td>9.40 mph</td><td><span class="tag r">-4.6%</span></td></tr>
+      <tr><td>% Congested</td><td>59%</td><td>65%</td><td><span class="tag r">+10.2%</span></td></tr>
+    </table>
+    <p><span class="tag g">&#10003; Complete</span></p>
+  </div>
+
+  <div class="section">
+    <h2>&#127775; Phase 5: Advanced Analysis - Mobility Priority Score</h2>
+    <h3>Aggregation Levels</h3>
+    <table>
+      <tr><th>Table</th><th>Rows</th><th>Purpose</th></tr>
+      <tr><td>Zone x Hour</td><td>7,208</td><td>Core analytical table</td></tr>
+      <tr><td>Route Level</td><td>9,187</td><td>Route efficiency</td></tr>
+      <tr><td>Zone Summary</td><td>240</td><td>Zone-level priority</td></tr>
+      <tr><td>Daily Trend</td><td>31</td><td>Day-by-day trend</td></tr>
+    </table>
+    <h3>&#11088; MOBILITY PRIORITY SCORE (Unique Feature)</h3>
+    <div class="priority">
+      <strong>Formula:</strong><br>
+      Priority = (0.30 x Demand + 0.30 x Congestion + 0.20 x Speed_Inv + 0.20 x Duration) x 100<br><br>
+      <strong>Logic:</strong> High Demand + High Congestion + Low Speed + Long Duration = HIGH PRIORITY<br>
+      <strong>Purpose:</strong> Identifies routes/areas that should be prioritized for transport optimization
+    </div>
+    <h3>Priority Distribution</h3>
+    <table>
+      <tr><th>Level</th><th>Count</th></tr>
+      <tr><td><span class="tag b">Minimal</span></td><td>322</td></tr>
+      <tr><td><span class="tag g">Low</span></td><td>5,159</td></tr>
+      <tr><td><span class="tag y">Medium</span></td><td>1,714</td></tr>
+      <tr><td><span class="tag r">High</span></td><td>13</td></tr>
+    </table>
+    <h3>Top 5 Hotspots</h3>
+    <table>
+      <tr><th>Zone</th><th>Hour</th><th>Day</th><th>Trips</th><th>Speed</th><th>Priority</th></tr>
+      <tr><td>Kingsbridge Heights</td><td>11</td><td>Weekend</td><td>1</td><td>0.24 mph</td><td><span class="tag r">68.5</span></td></tr>
+      <tr><td>Midtown Center</td><td>18</td><td>Weekday</td><td>10,890</td><td>7.79 mph</td><td><span class="tag r">64.7</span></td></tr>
+      <tr><td>Midtown Center</td><td>17</td><td>Weekday</td><td>9,742</td><td>7.07 mph</td><td><span class="tag r">63.3</span></td></tr>
+      <tr><td>Upper East Side South</td><td>14</td><td>Weekday</td><td>8,614</td><td>7.25 mph</td><td><span class="tag r">58.4</span></td></tr>
+      <tr><td>Midtown Center</td><td>19</td><td>Weekday,9,339</td><td>8.86 mph</td><td><span class="tag r">58.1</span></td></tr>
+    </table>
+    <p><span class="tag g">&#10003; Complete</span></p>
+  </div>
+
+  <div class="section">
+    <h2>&#128161; Phase 6: Key Insights</h2>
+    <div class="insight">
+      <strong>&#128205; WHERE?</strong> Mobility Hotspots<br>
+      Midtown Center, Upper East Side South, Penn Station are top hotspots. Brooklyn's Brownsville has highest per-zone priority (7.6 mph avg speed).
+    </div>
+    <div class="insight">
+      <strong>&#9200; WHEN?</strong> Peak Demand<br>
+      Busiest hours: 6 PM, 5 PM, 7 PM. Weekday ~75,191 trips/day. Weekend ~76,118 trips/day.
+    </div>
+    <div class="insight">
+      <strong>&#129300; WHY?</strong> Congestion Drivers<br>
+      Speed drops 4.6% during peak (9.4 vs 9.9 mph). Congestion surges to 64.5% during peak hours.
+    </div>
+    <div class="insight">
+      <strong>&#128681; WHICH?</strong> Inefficient Routes<br>
+      Midtown Center has 6 high-priority hours. At 5-6 PM, ~10,000 trips at only ~7 mph.
+    </div>
+    <div class="insight">
+      <strong>&#127919; PRIORITIZE?</strong> Recommendations<br>
+      <ul>
+        <li><strong>Midtown Center:</strong> Dedicated lanes 4-8 PM. Signal optimization. Increase service frequency.</li>
+        <li><strong>Upper East Side South:</strong> Transit signal priority for afternoon hours.</li>
+        <li><strong>Brownsville:</strong> Infrastructure improvement to raise base speed above 10 mph.</li>
+      </ul>
+    </div>
+    <div class="priority">
+      <strong>&#11088; KEY TAKEAWAY:</strong> Midtown Center at 5-7 PM is the #1 mobility problem. 10,890 trips at 7.8 mph, priority score 64.7/100. This zone-hour should be the top priority for transport optimization.
+    </div>
+    <p><span class="tag g">&#10003; Complete</span></p>
+  </div>
+
+  <div class="section">
+    <h2>&#128202; Phase 7: Tableau Dashboard</h2>
+    <h3>8 Sheets Built</h3>
+    <table>
+      <tr><th>#</th><th>Sheet</th><th>Type</th></tr>
+      <tr><td>1</td><td>KPI Trips</td><td>Big Number</td></tr>
+      <tr><td>2</td><td>KPI Speed</td><td>Big Number</td></tr>
+      <tr><td>3</td><td>Hourly Demand</td><td>Line Chart</td></tr>
+      <tr><td>4</td><td>Demand Heatmap</td><td>Zone x Hour Grid</td></tr>
+      <tr><td>5</td><td>Priority Zones</td><td>Bar Chart</td></tr>
+      <tr><td>6</td><td>Speed vs Duration</td><td>Scatter Plot</td></tr>
+      <tr><td>7</td><td>Borough Stats</td><td>Bar Chart</td></tr>
+      <tr><td>8</td><td>Priority Dist</td><td>Bar Chart</td></tr>
+    </table>
+    <h3>Interactive Filters</h3>
+    <ul>
+      <li>PU_borough (Dropdown)</li>
+      <li>day_type (Weekday/Weekend)</li>
+      <li>peak_period (Dropdown)</li>
+    </ul>
+    <p><span class="tag g">&#10003; Complete</span></p>
+  </div>
+
+  <div class="section">
+    <h2>&#128230; Final Deliverables</h2>
+    <div class="kpi-grid">
+      <div class="kpi-card"><div class="val">6</div><div class="lbl">Jupyter Notebooks</div></div>
+      <div class="kpi-card"><div class="val">2.3M+</div><div class="lbl">Trips Analyzed</div></div>
+      <div class="kpi-card"><div class="val">39</div><div class="lbl">Features</div></div>
+    </div>
+    <div class="kpi-grid">
+      <div class="kpi-card"><div class="val">8</div><div class="lbl">Tableau Sheets</div></div>
+      <div class="kpi-card"><div class="val">13</div><div class="lbl">High-Priority Hotspots</div></div>
+      <div class="kpi-card"><div class="val">64.7</div><div class="lbl">Max Priority Score</div></div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p>&#128652; UrbanMobility 360 - Smart Urban Transport Analytics</p>
+    <p>NYC Yellow Taxi | January 2024 | Python + Tableau</p>
+  </div>
+
+</div>
+</body>
+</html>

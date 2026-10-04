@@ -1,0 +1,9 @@
+venv/
+data/raw/
+data/processed/yellow_tripdata_2024-01.parquet
+data/processed/yellow_tripdata_2024-01_clean.parquet
+data/processed/yellow_tripdata_2024-01_engineered.parquet
+.ipynb_checkpoints/
+__pycache__/
+*.pyc
+.DS_Store
